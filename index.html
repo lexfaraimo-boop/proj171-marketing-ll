@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing × Ops: Working Better Together | Zinc Work</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --pink:#F04DA9;--dark:#131313;--gray:#6C6C6C;--blue:#0066FF;--peach:#FFF5F0;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--peach);color:var(--dark);overflow:hidden}
+.presentation{width:100vw;height:100vh;position:relative}
+.slide{position:absolute;top:0;left:0;width:100%;height:100%;padding:56px 72px 60px;display:none;flex-direction:column;background:var(--peach);overflow:hidden}
+.slide.active{display:flex}
+.slide.center{justify-content:center;align-items:center;text-align:center}
+.logo{position:absolute;top:22px;left:36px;font-size:22px;font-weight:800;color:var(--blue);letter-spacing:-0.5px}
+.slide-num{position:absolute;bottom:22px;right:36px;font-size:13px;color:var(--gray)}
+h1{font-size:52px;font-weight:800;line-height:1.1;margin-bottom:16px;color:var(--dark)}
+h1 span{color:var(--pink)}
+h2{font-size:36px;font-weight:700;margin-bottom:28px;color:var(--dark);line-height:1.2}
+h2 span{color:var(--pink)}
+h3{font-size:20px;font-weight:600;margin-bottom:14px;color:var(--blue)}
+h4{font-size:16px;font-weight:700;margin-bottom:10px;color:var(--dark)}
+p{font-size:18px;line-height:1.6;color:var(--gray)}
+.subtitle{font-size:22px;color:var(--gray);margin-top:8px}
+.small-intro{font-size:15px;color:var(--gray);margin-bottom:20px;font-style:italic}
+.content{flex:1;display:flex;flex-direction:column;justify-content:flex-start;min-height:0}
+
+/* Grids */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:16px}
+
+/* Cards */
+.card{background:#fff;border-radius:12px;padding:22px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.card h4{color:var(--blue);margin-bottom:12px}
+.card ul{list-style:none;padding:0}
+.card li{padding:6px 0;font-size:15px;color:var(--gray);border-bottom:1px solid #f0f0f0}
+.card li:last-child{border-bottom:none}
+.card li::before{content:'→ ';color:var(--pink);font-weight:700}
+
+/* Highlight box */
+.hbox{background:#fff;border-left:4px solid var(--pink);padding:18px 22px;border-radius:0 12px 12px 0;box-shadow:0 2px 8px rgba(0,0,0,.06);margin:12px 0;font-size:16px;line-height:1.5;color:var(--dark)}
+.hbox.large{font-size:20px;font-weight:600;padding:22px 28px}
+.hbox p{font-size:inherit;color:inherit}
+
+/* Bullet list */
+.bullets{list-style:none;padding:0;margin:8px 0}
+.bullets li{padding:10px 0;font-size:18px;color:var(--dark);display:flex;align-items:flex-start;gap:12px;border-bottom:1px solid rgba(0,0,0,.05)}
+.bullets li:last-child{border-bottom:none}
+.bullets li::before{content:'●';color:var(--pink);font-size:10px;margin-top:6px;flex-shrink:0}
+.bullets.sm li{font-size:15px;padding:6px 0}
+
+/* Tick list */
+.ticks{list-style:none;padding:0;margin:8px 0}
+.ticks li{padding:8px 0;font-size:16px;color:var(--dark);display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid rgba(0,0,0,.05)}
+.ticks li:last-child{border-bottom:none}
+.ticks li::before{content:'✓';color:var(--pink);font-weight:800;flex-shrink:0}
+
+/* Tables */
+table{width:100%;border-collapse:separate;border-spacing:0;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06);margin:10px 0;font-size:14px}
+th{background:var(--dark);color:#fff;padding:11px 16px;text-align:left;font-weight:600;font-size:13px}
+td{padding:10px 16px;border-bottom:1px solid #f0f0f0;font-size:14px;color:var(--gray);background:#fff;vertical-align:top}
+tr:last-child td{border-bottom:none}
+td:first-child{color:var(--dark);font-weight:500}
+
+/* Flow */
+.flow{display:flex;align-items:center;gap:12px;margin:16px 0;flex-wrap:wrap}
+.flow-step{background:#fff;padding:14px 20px;border-radius:10px;font-size:14px;font-weight:600;color:var(--dark);box-shadow:0 2px 8px rgba(0,0,0,.06);flex:1;min-width:120px;text-align:center;line-height:1.4}
+.flow-arrow{color:var(--pink);font-size:22px;font-weight:800;flex-shrink:0}
+.flow.vertical{flex-direction:column;align-items:flex-start}
+.flow.vertical .flow-step{width:100%;text-align:left;display:flex;align-items:center;gap:14px}
+.flow.vertical .flow-step .step-num{width:32px;height:32px;background:var(--pink);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex-shrink:0}
+.flow.vertical .flow-arrow{align-self:flex-start;margin-left:15px;font-size:18px}
+
+/* Agent boxes */
+.agent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:16px}
+.agent-box{background:#fff;border-radius:12px;padding:20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.agent-box .num{width:36px;height:36px;background:var(--pink);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;margin:0 auto 12px}
+.agent-box .aname{font-weight:700;color:var(--dark);margin-bottom:8px;font-size:16px}
+.agent-box .adesc{font-size:13px;color:var(--gray);line-height:1.5}
+
+/* Numbered agenda */
+.agenda-list{list-style:none;padding:0;margin:8px 0}
+.agenda-list li{display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.06);font-size:20px;color:var(--dark)}
+.agenda-list li:last-child{border-bottom:none}
+.agenda-list li .anum{width:32px;height:32px;background:var(--pink);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+
+/* Bottom note */
+.note{font-size:13px;color:var(--gray);margin-top:10px;font-style:italic}
+.bold-close{font-size:17px;font-weight:700;color:var(--dark);margin-top:14px}
+.pink-italic{color:var(--pink);font-style:italic;font-size:15px;margin-top:10px}
+
+/* Subheading */
+.subh{font-size:15px;color:var(--blue);font-weight:600;margin-bottom:14px;margin-top:-10px}
+
+/* Nav dots */
+.nav-dots{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:8px}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:#ddd;cursor:pointer;transition:background .3s}
+.nav-dot.active{background:var(--pink)}
+
+/* Speaker notes */
+#notes-panel{position:fixed;bottom:0;left:0;right:0;background:#1a1a1a;color:#fff;padding:18px 36px;font-size:15px;line-height:1.6;z-index:1000;display:none;max-height:200px;overflow-y:auto;border-top:3px solid var(--pink)}
+#notes-panel.visible{display:block}
+#notes-btn{position:absolute;bottom:16px;left:36px;background:rgba(0,0,0,.08);border:none;padding:5px 12px;border-radius:20px;font-size:12px;color:var(--gray);cursor:pointer;z-index:100}
+#notes-btn:hover{background:rgba(0,0,0,.15)}
+</style>
+</head>
+<body>
+<div class="presentation" id="pres">
+
+<!-- SLIDE 1: Title -->
+<div class="slide active center" data-notes="Welcome everyone. Today is about building a clearer, more structured way of working together. Not a complaint session — a direction-setting one. By the end we want to walk out with three things agreed.">
+  <div class="logo">Zinc</div>
+  <h1>Marketing <span>×</span> Ops</h1>
+  <h1>Working Better <span>Together</span></h1>
+  <p class="subtitle">Wednesday 26 March 2026 · Lex Faraimo, Core Ops</p>
+  <div class="slide-num">1 / 20</div>
+</div>
+
+<!-- SLIDE 2: Agenda -->
+<div class="slide" data-notes="We'll move through this at a good pace but there's space for questions throughout — don't hold them to the end.">
+  <div class="logo">Zinc</div>
+  <h2>What we're <span>covering today</span></h2>
+  <div class="content">
+    <ol class="agenda-list">
+      <li><span class="anum">1</span> Why we're having this conversation</li>
+      <li><span class="anum">2</span> What you told us</li>
+      <li><span class="anum">3</span> The model — how requests work</li>
+      <li><span class="anum">4</span> What's already built and what we're agreeing</li>
+      <li><span class="anum">5</span> Open Q&amp;A</li>
+    </ol>
+  </div>
+  <div class="slide-num">2 / 20</div>
+</div>
+
+<!-- SLIDE 3: Setting the Scene -->
+<div class="slide" data-notes="This isn't a criticism of how things have worked — it's just where we are. Requests have come in as they've come up, and the team has always done its best. But without a clear model, it's hard to know where ops adds the most value. That's what today fixes.">
+  <div class="logo">Zinc</div>
+  <h2>Setting the <span>Scene</span></h2>
+  <div class="content">
+    <ul class="bullets">
+      <li>Until now, there's been no formal plan for how ops and marketing work together</li>
+      <li>Without structure, ops has been pulled towards day-to-day execution rather than higher-impact infrastructure work</li>
+      <li>Today we're putting that plan in place</li>
+    </ul>
+  </div>
+  <div class="slide-num">3 / 20</div>
+</div>
+
+<!-- SLIDE 4: What You Told Us -->
+<div class="slide" data-notes="We sent this survey before today specifically so this session could be grounded in what you actually experience — not what we assume. Everything here is anonymous. The themes point to the same root cause: no shared model. That's what we're fixing today.">
+  <div class="logo">Zinc</div>
+  <h2>What <span>You Told Us</span></h2>
+  <p class="small-intro">7 anonymous responses before today's session. Here's what we heard.</p>
+  <div class="content" style="gap:8px;display:flex;flex-direction:column">
+    <div class="hbox">No consistent way of raising requests — Slack, form, manager, or figure it out alone</div>
+    <div class="hbox">Role clarity rated ~3/5 — not always clear what ops vs the analyst owns</div>
+    <div class="hbox">Biggest pain: <strong>visibility</strong> — most don't know what's happening after they submit</div>
+    <div class="hbox">People are solving things themselves, assuming ops is too busy to help</div>
+    <div class="hbox">The relationship: <em>"functional but could be better"</em> — the dominant answer</div>
+  </div>
+  <div class="slide-num">4 / 20</div>
+</div>
+
+<!-- SLIDE 5: Time Reality Check -->
+<div class="slide" data-notes="We're not sharing this to make ops sound hard to work with. We're sharing it because when the expectation gap is this wide, it creates frustration on both sides. A clear request process fixes this — you know what to expect, we know what's coming.">
+  <div class="logo">Zinc</div>
+  <h2>The Time <span>Reality Check</span></h2>
+  <p class="small-intro">Some tasks look simple from the outside. Here's what's actually involved.</p>
+  <div class="content">
+    <table>
+      <thead><tr><th>Task</th><th>What the team thinks</th><th>What's actually involved</th></tr></thead>
+      <tbody>
+        <tr><td>Pull a list from the CRM</td><td>Under 30 minutes</td><td>The pull is quick — getting the data <strong>clean</strong> can take much longer</td></tr>
+        <tr><td>Set up an email nurture sequence</td><td>30 minutes – 2 hours</td><td>With rules and logic: a day or more</td></tr>
+        <tr><td>Make a "small" edit to an automation</td><td>Under 30 min – half a day</td><td>Automations span multiple tools and steps — what looks small rarely is</td></tr>
+      </tbody>
+    </table>
+    <p class="pink-italic">The complexity isn't always visible from the outside — which is why structure helps set realistic expectations on both sides.</p>
+  </div>
+  <div class="slide-num">5 / 20</div>
+</div>
+
+<!-- SLIDE 6: The Demand Picture -->
+<div class="slide" data-notes="Neither column is wrong. The left column are real requests that needed doing. But when that's the majority of where analyst time goes, the right column — the infrastructure work that would give marketing a much stronger picture of what's working — keeps getting pushed back.">
+  <div class="logo">Zinc</div>
+  <h2>The Demand <span>Picture</span></h2>
+  <div class="content">
+    <div class="grid-2">
+      <div class="card">
+        <h4>What keeps landing with ops</h4>
+        <ul>
+          <li>Recurring event data uploads</li>
+          <li>Form and dashboard updates</li>
+          <li>On-the-day event support</li>
+          <li>Dashboard clones for new events</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>What we haven't had time to build</h4>
+        <ul>
+          <li>Attribution model (event-influenced pipeline)</li>
+          <li>Marketing performance reporting framework</li>
+          <li>Multi-event comparison tooling</li>
+          <li>DreamData integration</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">This is a pattern — not a call-out. The pattern shows where time goes.</p>
+  </div>
+  <div class="slide-num">6 / 20</div>
+</div>
+
+<!-- SLIDE 7: The Problem It Creates -->
+<div class="slide" data-notes="Nobody is at fault here. When requests come in ad hoc and there's no triage model, urgent always beats important. The infrastructure work — the attribution model, the reporting framework — gets pushed to 'next week' indefinitely. This session breaks that cycle.">
+  <div class="logo">Zinc</div>
+  <h2>The Problem <span>It Creates</span></h2>
+  <div class="content">
+    <div class="hbox large">"When there's no structure, time fills up with what's urgent — not what's impactful."</div>
+    <ul class="bullets" style="margin-top:16px">
+      <li>Analyst time has been going predominantly to execution tasks</li>
+      <li>Infrastructure work keeps getting deprioritised as a result</li>
+      <li>Marketing doesn't yet have the full picture it needs to make decisions</li>
+    </ul>
+    <p class="note" style="margin-top:16px">This is a structural issue — not a people one.</p>
+  </div>
+  <div class="slide-num">7 / 20</div>
+</div>
+
+<!-- SLIDE 8: The Trade -->
+<div class="slide" data-notes="Nothing gets dropped overnight. Every task being transitioned has documentation. Where the team needs a walkthrough, we do a walkthrough. The difference is that once it's handed over properly, analyst time is protected for the work only ops can do.">
+  <div class="logo">Zinc</div>
+  <h2>Here's what <span>we're proposing</span></h2>
+  <div class="content">
+    <div class="flow" style="margin-top:8px">
+      <div class="flow-step">Ops hands back the execution layer</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Properly — with documentation, walkthroughs, and a clear owner</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Analyst time goes into infrastructure marketing can't build itself</div>
+    </div>
+    <div class="hbox" style="margin-top:16px">Attribution. Pipeline reporting. HubSpot governance. The things that give marketing the full picture.</div>
+    <p class="bold-close">This isn't cutting support. It's directing it where it has the most leverage.</p>
+  </div>
+  <div class="slide-num">8 / 20</div>
+</div>
+
+<!-- SLIDE 9: How Requests Work -->
+<div class="slide" data-notes="The form is the single front door. You don't need to know who handles it — submit the request, ops routes it. If you're unsure which tier something is, submit it anyway and we'll triage.">
+  <div class="logo">Zinc</div>
+  <h2>How <span>Requests Work</span></h2>
+  <div class="content">
+    <div class="hbox">The test: Does this require cross-system thinking, data modelling, or technical expertise the marketing team doesn't have? <strong>If yes → Tier 1.</strong></div>
+    <div class="agent-grid">
+      <div class="agent-box"><div class="num">1</div><div class="aname">Ops Analysts</div><div class="adesc">Complex builds, infrastructure, analysis.<br>Example: attribution model build.</div></div>
+      <div class="agent-box"><div class="num">2</div><div class="aname">Ops Associates</div><div class="adesc">Documented, repeatable tasks.<br>Example: post-event data upload.</div></div>
+      <div class="agent-box"><div class="num">3</div><div class="aname">Self-Serve</div><div class="adesc">Documented processes the team runs.<br>Example: pre-event form testing.</div></div>
+    </div>
+    <p class="note" style="margin-top:12px">All via the ops request form — routed internally.</p>
+  </div>
+  <div class="slide-num">9 / 20</div>
+</div>
+
+<!-- SLIDE 10: Tier 1 Build & Infrastructure -->
+<div class="slide" data-notes="This is the work that requires someone who can think across systems. If it needs HubSpot talking to Sigma talking to DreamData — that's Tier 1. If it's the first time something's being built — Tier 1. Use the request form.">
+  <div class="logo">Zinc</div>
+  <h2>Tier 1 — <span>Build &amp; Infrastructure</span></h2>
+  <p class="subh">Ops Analysts — submitted via the ops request form</p>
+  <div class="content">
+    <table>
+      <thead><tr><th>What</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr><td>Attribution infrastructure</td><td>Event pipeline models, community attribution, demo hold rates, DreamData configuration</td></tr>
+        <tr><td>HubSpot architecture</td><td>Form routing logic, workflow automation, lead scoring, lifecycle stage logic</td></tr>
+        <tr><td>New dashboard builds</td><td>First-time builds, multi-event comparisons, cross-system dashboards</td></tr>
+        <tr><td>Tech stack integrations</td><td>Connecting tools — e.g. Luma → HubSpot for event attendance data</td></tr>
+        <tr><td>Process design (one-time)</td><td>Ops designs the process once, documents it, then hands it over</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Some HubSpot work sits with Core Ops broadly — not Marketing Ops exclusively.</p>
+  </div>
+  <div class="slide-num">10 / 20</div>
+</div>
+
+<!-- SLIDE 11: Tier 1 Analysis & Reporting -->
+<div class="slide" data-notes="When analyst time is freed from execution tasks, this is where it goes. These are the deliverables that directly improve marketing's ability to see what's working and make better decisions. This is the trade.">
+  <div class="logo">Zinc</div>
+  <h2>Tier 1 — <span>Analysis &amp; Reporting</span></h2>
+  <p class="subh">Ops Analysts — the high-value work we want to protect time for</p>
+  <div class="content">
+    <table>
+      <thead><tr><th>What</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr><td>Attribution analysis</td><td>Event-influenced pipeline, community attribution, demo hold rates</td></tr>
+        <tr><td>Deep strategic analysis</td><td>ICP breakdown, closed-lost patterns, pipeline contribution by channel</td></tr>
+        <tr><td>Monthly reporting</td><td>Standing deliverable — marketing performance summary</td></tr>
+        <tr><td>Cross-system data work</td><td>HubSpot + Sigma + DreamData combined analysis</td></tr>
+      </tbody>
+    </table>
+    <div class="hbox" style="margin-top:14px">This is the work that gives marketing the picture it needs to make decisions. <strong>Protecting analyst time for this is the whole point.</strong></div>
+  </div>
+  <div class="slide-num">11 / 20</div>
+</div>
+
+<!-- SLIDE 12: Tier 2 Ops Associates -->
+<div class="slide" data-notes="The associate handles these — you don't need to know who specifically. Submit the form. The goal over time is that sensible tasks here move to Tier 3 — but that only happens with proper documentation and a walkthrough, not a sudden handover.">
+  <div class="logo">Zinc</div>
+  <h2>Tier 2 — <span>Ops Associates</span></h2>
+  <p class="subh">Documented, repeatable tasks — all via the ops request form</p>
+  <div class="content">
+    <table>
+      <thead><tr><th>What</th><th>Via</th></tr></thead>
+      <tbody>
+        <tr><td>Post-event data uploads</td><td>Ops request form — routed internally</td></tr>
+        <tr><td>Dashboard replication for new events</td><td>Ops request form — routed internally</td></tr>
+        <tr><td>HubSpot list creation from uploaded data</td><td>Ops request form — routed internally</td></tr>
+        <tr><td>Leaderboard updates</td><td>Ops request form — transitioning to self-serve</td></tr>
+        <tr><td>Event tracking sheet updates</td><td>Ops request form — routed internally</td></tr>
+      </tbody>
+    </table>
+    <div class="hbox" style="margin-top:12px">Where it makes sense, the goal is to progressively move these to self-serve — fewer bottlenecks, faster turnaround, more capability sitting with the team that uses it.</div>
+  </div>
+  <div class="slide-num">12 / 20</div>
+</div>
+
+<!-- SLIDE 13: Tier 3 Self-Serve -->
+<div class="slide" data-notes="These all have documentation. If you haven't been shown, flag it — we'll do a one-time walkthrough. After that, it's yours. If you can't find something, ask.">
+  <div class="logo">Zinc</div>
+  <h2>Tier 3 — <span>Self-Serve</span></h2>
+  <p class="small-intro">A lot of this is already happening — we're just formalising it.</p>
+  <div class="content">
+    <div class="grid-2" style="gap:16px">
+      <div class="card" style="padding:16px">
+        <ul class="ticks">
+          <li>Pre-event form testing — checklist in the events Notion page, run before every event</li>
+          <li>On-the-day support — break/fix runbook in Notion, escalate to ops only if unresolved</li>
+          <li>Sales rep updates on the event demo form — Loom recorded, under 2 minutes</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:16px">
+        <ul class="ticks">
+          <li>Leaderboard updates — built and documented, transitioning to events/community team</li>
+          <li>Standard campaign list pulls — saved views configured in HubSpot</li>
+          <li>Paid performance reporting — dashboards built, read your own channel data</li>
+          <li>Basic HubSpot reporting — open the dashboard before raising a request</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">13 / 20</div>
+</div>
+
+<!-- SLIDE 14: Events Intake -->
+<div class="slide" data-notes="The intake form is live. You don't need to Slack the analyst, ask your manager to route it, or figure out who to go to. One form. Ops routes it. If you're not sure what tier something is, submit it and we'll triage.">
+  <div class="logo">Zinc</div>
+  <h2>Events Intake — <span>How It Works</span></h2>
+  <p class="subh">The form is already built. One submission per event covers everything.</p>
+  <div class="content">
+    <div class="flow">
+      <div class="flow-step">Submit the ops request form</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Include: event name, date, Tier 2 tasks needed, any Tier 1 requests</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Ops triages and allocates internally</div>
+    </div>
+    <div class="hbox" style="margin-top:12px"><strong>The process is done. We just need the team using it.</strong></div>
+    <ul class="bullets sm" style="margin-top:12px">
+      <li>No need to chase multiple people — one submission, ops handles the rest</li>
+      <li>Tier 1 and Tier 2 requests handled in the same submission</li>
+      <li>Ops will be in touch if anything needs clarifying</li>
+    </ul>
+  </div>
+  <div class="slide-num">14 / 20</div>
+</div>
+
+<!-- SLIDE 15: Out of Scope -->
+<div class="slide" data-notes="This list isn't exhaustive — it's the common ones. If something isn't on here and you're not sure, raise it via the form and we'll let you know.">
+  <div class="logo">Zinc</div>
+  <h2>Out of <span>Scope</span></h2>
+  <p class="subh" style="color:var(--gray)">Where to go instead</p>
+  <div class="content">
+    <table>
+      <thead><tr><th>What</th><th>Where to go</th></tr></thead>
+      <tbody>
+        <tr><td>Campaign execution (emails, social, scheduling)</td><td>Marketing team</td></tr>
+        <tr><td>Content, copy, assets, creative briefs</td><td>Marketing / #creative-requests</td></tr>
+        <tr><td>Website updates</td><td>Marketing / Webflow</td></tr>
+        <tr><td>Facilities, equipment, IT</td><td>Not ops — wrong channel</td></tr>
+        <tr><td>A/B test setup in HubSpot</td><td>Standard HubSpot functionality — marketing team</td></tr>
+      </tbody>
+    </table>
+    <p class="note" style="margin-top:12px">If you're not sure, ask. But these are things ops doesn't own.</p>
+  </div>
+  <div class="slide-num">15 / 20</div>
+</div>
+
+<!-- SLIDE 16: What's Already Built -->
+<div class="slide" data-notes="We didn't wait until today to start. Everything being transitioned already has documentation. If you find a gap — something that should be documented but isn't — tell us and we'll fix it before it gets handed over.">
+  <div class="logo">Zinc</div>
+  <h2>What's Already <span>Built For You</span></h2>
+  <div class="content">
+    <div class="hbox" style="margin-bottom:16px">Ops has already done the work to make this transition smooth. <strong>Nothing moves until there's documentation, a walkthrough, and a clear owner.</strong></div>
+    <ul class="ticks">
+      <li>On-the-day break/fix runbook — live in the events Notion page</li>
+      <li>Pre-event form testing checklist — live in the events Notion page</li>
+      <li>Sales rep demo form update — Loom recorded, under 2 minutes</li>
+      <li>Post-event data upload SOP — documented, associate-owned</li>
+      <li>Leaderboard — built, documented, and transition in progress</li>
+    </ul>
+    <p class="bold-close" style="margin-top:16px">You're not being handed a problem — you're being handed a process.</p>
+  </div>
+  <div class="slide-num">16 / 20</div>
+</div>
+
+<!-- SLIDE 17: What's Still to Agree -->
+<div class="slide" data-notes="These two items are the only things still open after today. The events intake process is not on this list — that form is built and ready. Community events scope is a separate conversation we'll have before end of March.">
+  <div class="logo">Zinc</div>
+  <h2>What's Still <span>to Agree</span></h2>
+  <div class="content">
+    <div class="grid-2" style="margin-top:8px">
+      <div class="card">
+        <h4>Community Events Scope</h4>
+        <p style="font-size:15px;color:var(--gray);line-height:1.6">Agree the community events track with the community team by end of March. Same 3-tier logic — just mapped to community event types.</p>
+      </div>
+      <div class="card">
+        <h4>HubSpot Views</h4>
+        <p style="font-size:15px;color:var(--gray);line-height:1.6">A joint tidy-up — not ops building views for you, but making sure the key ones are consistent and returning the right data. Marketing already builds their own; we're just standardising a few.</p>
+      </div>
+    </div>
+    <p class="note" style="margin-top:16px">Everything else is either already agreed or covered by the ops request form being live.</p>
+  </div>
+  <div class="slide-num">17 / 20</div>
+</div>
+
+<!-- SLIDE 18: The Ask -->
+<div class="slide" data-notes="These are the three things we want to walk out of this room with. We don't need everything perfect today — we need direction agreed. The details get worked out as we go, using the model we've just walked through.">
+  <div class="logo">Zinc</div>
+  <h2>What we're <span>asking for today</span></h2>
+  <div class="content">
+    <div class="agent-grid" style="grid-template-columns:1fr 1fr 1fr;margin-top:16px">
+      <div class="agent-box" style="text-align:left;padding:24px">
+        <div class="num" style="margin:0 0 14px 0">1</div>
+        <div class="adesc" style="font-size:15px;line-height:1.6">Agreement that documented tasks transition to marketing and events teams — with proper support, not overnight</div>
+      </div>
+      <div class="agent-box" style="text-align:left;padding:24px">
+        <div class="num" style="margin:0 0 14px 0">2</div>
+        <div class="adesc" style="font-size:15px;line-height:1.6">Sign-off on the service catalog as the reference point for how we work going forward</div>
+      </div>
+      <div class="agent-box" style="text-align:left;padding:24px">
+        <div class="num" style="margin:0 0 14px 0">3</div>
+        <div class="adesc" style="font-size:15px;line-height:1.6">Commit to using the ops request form — it's built and ready, we just need the team using it</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">18 / 20</div>
+</div>
+
+<!-- SLIDE 19: What Happens Next -->
+<div class="slide" data-notes="No long delay. The form is live today. The service catalog link goes out today. If something comes up between now and the community events conversation — use the form. We'll catch anything that needs a different route.">
+  <div class="logo">Zinc</div>
+  <h2>What <span>Happens Next</span></h2>
+  <div class="content">
+    <div class="flow vertical" style="gap:12px;margin-top:8px">
+      <div class="flow-step"><span class="step-num">1</span>Service catalog shared in Slack today — link goes out after this session</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><span class="step-num">2</span>Ops request form live from today — use it for any new requests</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><span class="step-num">3</span>Ops works with the community team on their track — by end of March</div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><span class="step-num">4</span>Questions or edge cases — tag us in #ops-requests or DM directly</div>
+    </div>
+  </div>
+  <div class="slide-num">19 / 20</div>
+</div>
+
+<!-- SLIDE 20: Q&A -->
+<div class="slide center" data-notes="Open floor. If anything we covered today needs more context, or there's something we didn't address — now's the time.">
+  <div class="logo">Zinc</div>
+  <h1>Over to <span>you.</span></h1>
+  <p class="subtitle">No wrong questions.</p>
+  <p style="font-size:14px;color:var(--gray);margin-top:24px">Lex Faraimo · Core Ops · Wednesday 26 March 2026</p>
+  <div class="slide-num">20 / 20</div>
+</div>
+
+<!-- Nav dots -->
+<div class="nav-dots" id="nav-dots"></div>
+
+<!-- Notes button -->
+<button id="notes-btn" onclick="toggleNotes()">Notes (N)</button>
+
+<!-- Notes panel -->
+<div id="notes-panel"></div>
+
+</div><!-- /presentation -->
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const dotsContainer = document.getElementById('nav-dots');
+const notesPanel = document.getElementById('notes-panel');
+let current = 0;
+let notesVisible = false;
+
+// Build dots
+slides.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'nav-dot' + (i === 0 ? ' active' : '');
+  d.addEventListener('click', () => goTo(i));
+  dotsContainer.appendChild(d);
+});
+
+function goTo(n) {
+  slides[current].classList.remove('active');
+  dotsContainer.children[current].classList.remove('active');
+  current = (n + slides.length) % slides.length;
+  slides[current].classList.add('active');
+  dotsContainer.children[current].classList.add('active');
+  if (notesVisible) showNotes();
+}
+
+function showNotes() {
+  const notes = slides[current].dataset.notes || '';
+  notesPanel.textContent = notes;
+}
+
+function toggleNotes() {
+  notesVisible = !notesVisible;
+  if (notesVisible) {
+    showNotes();
+    notesPanel.classList.add('visible');
+  } else {
+    notesPanel.classList.remove('visible');
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
+  if (e.key === 'n' || e.key === 'N') toggleNotes();
+});
+</script>
+</body>
+</html>
