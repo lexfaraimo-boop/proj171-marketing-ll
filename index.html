@@ -147,7 +147,7 @@ td:first-child{color:var(--dark);font-weight:600;white-space:nowrap}
   <svg width="380" height="14" viewBox="0 0 380 14" fill="none" style="margin:8px auto 0;display:block;position:relative;z-index:1">
     <path d="M4 9 Q95 3 190 8 Q285 13 376 6" stroke="#F04DA9" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.7"/>
   </svg>
-  <p class="subtitle" style="margin-top:20px">Wednesday 26 March 2026 · Lex Faraimo, Core Ops</p>
+  <p class="subtitle" style="margin-top:20px">Thursday 26 March 2026 · Lex Faraimo, Core Ops</p>
   <div class="slide-num">1 / 20</div>
 </div>
 
@@ -164,10 +164,10 @@ td:first-child{color:var(--dark);font-weight:600;white-space:nowrap}
   </svg>
   <div class="content fill">
     <ol class="agenda-list">
-      <li><span class="anum">1</span> Why we're having this conversation</li>
+      <li><span class="anum">1</span> Our current set-up</li>
       <li><span class="anum">2</span> What you told us</li>
       <li><span class="anum">3</span> The model — how requests work</li>
-      <li><span class="anum">4</span> What's already built and what we're agreeing</li>
+      <li><span class="anum">4</span> What's already built and our agreement to each other</li>
       <li><span class="anum">5</span> Open Q&amp;A</li>
     </ol>
   </div>
@@ -183,15 +183,15 @@ td:first-child{color:var(--dark);font-weight:600;white-space:nowrap}
   <!-- Pink left accent bar -->
   <div style="position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,#F04DA9,#0066FF);border-radius:0 4px 4px 0;z-index:1"></div>
   <div class="logo">Zinc</div>
-  <h2>Setting the <span>Scene</span></h2>
-  <svg class="stroke" width="180" height="12" viewBox="0 0 180 12" fill="none">
-    <path d="M3 7 Q45 2 90 7 Q135 12 177 6" stroke="#F04DA9" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.7"/>
+  <h2>Our Current <span>Set-Up</span></h2>
+  <svg class="stroke" width="210" height="12" viewBox="0 0 210 12" fill="none">
+    <path d="M3 7 Q52 2 105 7 Q158 12 207 6" stroke="#F04DA9" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.7"/>
   </svg>
   <div class="content fill">
     <ul class="bullets">
-      <li><div class="bmark"></div>Until now, there's been no formal plan for how ops and marketing work together</li>
-      <li><div class="bmark"></div>Without structure, ops has been pulled towards day-to-day execution rather than higher-impact infrastructure work</li>
-      <li><div class="bmark"></div>Today we're putting that plan in place</li>
+      <li><div class="bmark"></div>When the team was smaller, requests landed informally and the team handled them — it worked because the volume was manageable</li>
+      <li><div class="bmark"></div>As both teams have grown, the workload has scaled but the model hasn't kept pace — that's no one's fault, it's just what happens when you move fast</li>
+      <li><div class="bmark"></div>Today is about catching up — putting a clear structure in place so both teams know what to expect</li>
     </ul>
   </div>
   <div class="slide-num">3 / 20</div>
@@ -210,11 +210,11 @@ td:first-child{color:var(--dark);font-weight:600;white-space:nowrap}
   </svg>
   <p class="small-intro">7 anonymous responses before today's session. Here's what we heard.</p>
   <div class="content fill" style="gap:10px">
+    <div class="hbox" style="border-left-color:var(--pink);background:#fff8fc"><strong>The standout finding:</strong> people are solving things themselves because they assume ops is too busy to help — not because they don't want support</div>
     <div class="hbox">No consistent way of raising requests — Slack, form, manager, or figure it out alone</div>
-    <div class="hbox">Role clarity rated ~3/5 — not always clear what ops vs the analyst owns</div>
-    <div class="hbox">Biggest pain: <strong>visibility</strong> — most don't know what's happening after they submit</div>
-    <div class="hbox">People are solving things themselves, assuming ops is too busy to help</div>
-    <div class="hbox">The relationship: <em>"functional but could be better"</em> — the dominant answer</div>
+    <div class="hbox">Role clarity rated ~3/5 — not always clear what ops vs the analyst owns, or who to go to</div>
+    <div class="hbox">Biggest pain: <strong>visibility</strong> — most don't know what's happening after they submit something</div>
+    <div class="hbox">The relationship: <em>"functional but could be better"</em> — the most common answer</div>
   </div>
   <div class="slide-num">4 / 20</div>
 </div>
@@ -263,18 +263,19 @@ td:first-child{color:var(--dark);font-weight:600;white-space:nowrap}
       <div class="card">
         <h4>What keeps landing with ops</h4>
         <ul>
-          <li>Recurring event data uploads</li>
-          <li>Form and dashboard updates</li>
-          <li>On-the-day event support</li>
-          <li>Dashboard clones for new events</li>
+          <li>Post-event data uploads and list creation</li>
+          <li>Ad-hoc CRM list pulls and data manipulation</li>
+          <li>Dashboard and form updates across channels</li>
+          <li>On-the-day event support and break/fix</li>
+          <li>Campaign reporting requests</li>
         </ul>
       </div>
       <div class="card" style="border-top:4px solid var(--pink)">
         <h4 style="color:var(--pink)">What we haven't had time to build</h4>
         <ul>
-          <li>Attribution model (event-influenced pipeline)</li>
+          <li>Attribution model (non-event and event influenced pipeline)</li>
           <li>Marketing performance reporting framework</li>
-          <li>Multi-event comparison tooling</li>
+          <li>Multi-channel comparison and benchmarking</li>
           <li>DreamData integration</li>
         </ul>
       </div>
@@ -321,9 +322,9 @@ td:first-child{color:var(--dark);font-weight:600;white-space:nowrap}
   </svg>
   <div class="content fill">
     <div class="flow" style="flex:1;margin:8px 0">
-      <div class="flow-step">Ops hands back the execution layer</div>
+      <div class="flow-step">Ops transitions the execution layer</div>
       <div class="flow-arrow">→</div>
-      <div class="flow-step">Properly — with documentation, walkthroughs, and a clear owner</div>
+      <div class="flow-step">Marketing executes — with documentation and walkthroughs provided. Each channel owner takes ownership of their tasks</div>
       <div class="flow-arrow">→</div>
       <div class="flow-step">Analyst time goes into infrastructure marketing can't build itself</div>
     </div>
@@ -350,17 +351,17 @@ td:first-child{color:var(--dark);font-weight:600;white-space:nowrap}
       <div class="agent-box center-align">
         <div class="num">1</div>
         <div class="aname">Ops Analysts</div>
-        <div class="adesc">Complex builds, infrastructure, analysis.<br><br>Example: attribution model build.</div>
+        <div class="adesc">Complex builds, infrastructure, analysis.<br><br>Examples: attribution model build, HubSpot workflow architecture, pipeline reporting.</div>
       </div>
       <div class="agent-box center-align">
         <div class="num">2</div>
         <div class="aname">Ops Associates</div>
-        <div class="adesc">Documented, repeatable tasks.<br><br>Example: post-event data upload.</div>
+        <div class="adesc">Documented, repeatable tasks.<br><br>Examples: post-event data upload, campaign list creation from uploaded data.</div>
       </div>
       <div class="agent-box center-align">
         <div class="num">3</div>
         <div class="aname">Self-Serve</div>
-        <div class="adesc">Documented processes the team runs.<br><br>Example: pre-event form testing.</div>
+        <div class="adesc">Documented processes the team runs independently.<br><br>Examples: pre-event form testing, paid dashboard reporting, standard list pulls.</div>
       </div>
     </div>
     <p class="note" style="margin-top:12px">All via the ops request form — routed internally.</p>
@@ -421,7 +422,7 @@ td:first-child{color:var(--dark);font-weight:600;white-space:nowrap}
       <table>
         <thead><tr><th>What</th><th>Examples</th></tr></thead>
         <tbody>
-          <tr><td>Attribution analysis</td><td>Event-influenced pipeline, community attribution, demo hold rates</td></tr>
+          <tr><td>Attribution analysis</td><td>Non-event and event influence pipeline, community attribution, demo hold rates</td></tr>
           <tr><td>Deep strategic analysis</td><td>ICP breakdown, closed-lost patterns, pipeline contribution by channel</td></tr>
           <tr><td>Monthly reporting</td><td>Standing deliverable — marketing performance summary</td></tr>
           <tr><td>Cross-system data work</td><td>HubSpot + Sigma + DreamData combined analysis</td></tr>
@@ -454,10 +455,11 @@ td:first-child{color:var(--dark);font-weight:600;white-space:nowrap}
         <thead><tr><th>What</th><th>Via</th></tr></thead>
         <tbody>
           <tr><td>Post-event data uploads</td><td>Ops request form — routed internally</td></tr>
-          <tr><td>Dashboard replication for new events</td><td>Ops request form — routed internally</td></tr>
-          <tr><td>HubSpot list creation from uploaded data</td><td>Ops request form — routed internally</td></tr>
+          <tr><td>Campaign list creation from uploaded or CRM data</td><td>Ops request form — routed internally</td></tr>
+          <tr><td>HubSpot list creation and basic segmentation</td><td>Ops request form — routed internally</td></tr>
+          <tr><td>Dashboard replication for new campaigns or events</td><td>Ops request form — routed internally</td></tr>
           <tr><td>Leaderboard updates</td><td>Ops request form — transitioning to self-serve</td></tr>
-          <tr><td>Event tracking sheet updates</td><td>Ops request form — routed internally</td></tr>
+          <tr><td>Tracking sheet and form updates</td><td>Ops request form — routed internally</td></tr>
         </tbody>
       </table>
     </div>
@@ -480,8 +482,9 @@ td:first-child{color:var(--dark);font-weight:600;white-space:nowrap}
   <svg class="stroke" width="200" height="12" viewBox="0 0 200 12" fill="none">
     <path d="M3 7 Q50 2 100 7 Q150 12 197 6" stroke="#F04DA9" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.7"/>
   </svg>
-  <p class="small-intro" style="margin-bottom:12px">A lot of this is already happening — we're just formalising it.</p>
-  <div class="content fill">
+  <p class="small-intro" style="margin-bottom:8px">A lot of this is already happening — we're just formalising it.</p>
+  <div class="content fill" style="gap:12px">
+    <div class="hbox" style="font-size:15px;padding:14px 20px"><strong>Not sure if it's self-serve?</strong> &nbsp;Ask: Is it simple? Could you find a guide online? Would it take under an hour? If yes to all three — it's self-serve. Give it a go first.</div>
     <div class="grid-2" style="flex:1">
       <div class="card">
         <ul class="ticks">
@@ -689,7 +692,7 @@ td:first-child{color:var(--dark);font-weight:600;white-space:nowrap}
     <path d="M4 10 Q70 3 140 10 Q210 17 276 8" stroke="#F04DA9" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.8"/>
   </svg>
   <p class="subtitle" style="font-size:26px;margin-top:16px">No wrong questions.</p>
-  <p style="font-size:15px;color:var(--gray);margin-top:28px;position:relative;z-index:1">Lex Faraimo · Core Ops · Wednesday 26 March 2026</p>
+  <p style="font-size:15px;color:var(--gray);margin-top:28px;position:relative;z-index:1">Lex Faraimo · Core Ops · Thursday 26 March 2026</p>
   <div class="slide-num">20 / 20</div>
 </div>
 
