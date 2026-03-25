@@ -559,21 +559,28 @@ td:first-child{color:var(--dark);font-weight:600;white-space:nowrap}
   <svg class="stroke" width="280" height="12" viewBox="0 0 280 12" fill="none">
     <path d="M3 7 Q70 2 140 7 Q210 12 277 6" stroke="#F04DA9" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.7"/>
   </svg>
+  <p class="subh">Previous requests and work done</p>
   <div class="content fill">
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Request</th><th>Who / Context</th><th>Tier</th></tr></thead>
+        <thead><tr><th>Request</th><th>Context</th><th>Tier</th></tr></thead>
         <tbody>
-          <tr><td>N8N pull from Metabase → Webflow channel</td><td>Ren. knows both Metabase and Webflow; simple read, repopulate into his own channel</td><td style="color:var(--blue);font-weight:700">Marketing</td></tr>
-          <tr><td>Organic visibility reporting</td><td>Maria. pulls from 4 data sources → spreadsheet → Claude → Slack. Multi-system, deeply analytical; requires both marketing and ops specialist</td><td style="color:var(--pink);font-weight:700">Tier 1 to Analyst</td></tr>
-          <tr><td>Campaign bot (LinkedIn, CSV, Slack)</td><td>Becky + Analyst. Becky building alongside because she's learning N8N. Two systems, collaborative build</td><td style="color:var(--pink);font-weight:700">Tier 1 to Analyst</td></tr>
-          <tr><td>List upload</td><td>Standard upload to HubSpot post-event or campaign</td><td style="color:var(--blue);font-weight:700">Marketing</td></tr>
-          <tr><td>Post-event attendee analysis</td><td>Lead scan pull → demo bookings → data summary. One system (HubSpot), fairly simple. routed to associate</td><td style="font-weight:700">Tier 2 to Associate</td></tr>
-          <tr><td>G2 Reviews → Slack</td><td>Pre-built integration, owned by marketing, one-to-one system</td><td style="color:var(--blue);font-weight:700">Marketing</td></tr>
-          <tr><td>Enterprise interaction signals in Dreamdata + Slack</td><td>Building company-level meaningful engagement signals. analyst-level complexity</td><td style="color:var(--pink);font-weight:700">Tier 1 to Analyst</td></tr>
-          <tr><td>Sigma dashboards (Dreamdata → HubSpot close-won)</td><td>Cross-system BI build combining pipeline stages. analyst-level</td><td style="color:var(--pink);font-weight:700">Tier 1 to Analyst</td></tr>
-          <tr><td>Post-event data clean and review</td><td>HubSpot data hygiene post-event. associate-level</td><td style="font-weight:700">Tier 2 to Associate</td></tr>
-          <tr><td>Building marketing email workflow</td><td>Standard email workflow build in HubSpot. marketing-owned with documentation</td><td style="color:var(--blue);font-weight:700">Marketing</td></tr>
+          <!-- MARKETING -->
+          <tr style="background:#e8f0ff"><td colspan="3" style="font-size:12px;font-weight:800;color:#0066FF;text-transform:uppercase;letter-spacing:.8px;padding:7px 20px;background:#e8f0ff">Marketing owned</td></tr>
+          <tr style="background:#f2f6ff"><td>N8N pull from Metabase to Webflow</td><td>Ren knows both tools; simple read and repopulate into his own channel</td><td style="color:var(--blue);font-weight:700;white-space:nowrap">Marketing</td></tr>
+          <tr style="background:#f2f6ff"><td>List upload</td><td>Standard upload to HubSpot post-event or campaign</td><td style="color:var(--blue);font-weight:700;white-space:nowrap">Marketing</td></tr>
+          <tr style="background:#f2f6ff"><td>G2 Reviews into Slack</td><td>Pre-built integration, owned by marketing, one-to-one system</td><td style="color:var(--blue);font-weight:700;white-space:nowrap">Marketing</td></tr>
+          <tr style="background:#f2f6ff"><td>Building marketing email workflow</td><td>Standard HubSpot email workflow with documentation in place</td><td style="color:var(--blue);font-weight:700;white-space:nowrap">Marketing</td></tr>
+          <!-- ASSOCIATE -->
+          <tr style="background:#f0f0f0"><td colspan="3" style="font-size:12px;font-weight:800;color:#555;text-transform:uppercase;letter-spacing:.8px;padding:7px 20px;background:#f0f0f0">Tier 2. Ops Associate</td></tr>
+          <tr style="background:#f7f7f7"><td>Post-event attendee analysis</td><td>Lead scan pull, demo bookings, data summary. One system (HubSpot), fairly simple</td><td style="color:#555;font-weight:700;white-space:nowrap">Associate</td></tr>
+          <tr style="background:#f7f7f7"><td>Post-event data clean and review</td><td>HubSpot data hygiene post-event</td><td style="color:#555;font-weight:700;white-space:nowrap">Associate</td></tr>
+          <!-- ANALYST -->
+          <tr style="background:#ffe8f5"><td colspan="3" style="font-size:12px;font-weight:800;color:var(--pink);text-transform:uppercase;letter-spacing:.8px;padding:7px 20px;background:#ffe8f5">Tier 1. Ops Analyst</td></tr>
+          <tr style="background:#fff2f9"><td>Organic visibility reporting</td><td>Maria. 4 data sources into a spreadsheet, into Claude, out to Slack. Multi-system, deeply analytical</td><td style="color:var(--pink);font-weight:700;white-space:nowrap">Analyst</td></tr>
+          <tr style="background:#fff2f9"><td>Campaign bot (LinkedIn, CSV, Slack)</td><td>Becky building alongside the analyst to learn N8N. Two systems, collaborative build</td><td style="color:var(--pink);font-weight:700;white-space:nowrap">Analyst</td></tr>
+          <tr style="background:#fff2f9"><td>Enterprise interaction signals in Dreamdata</td><td>Company-level engagement signals across Dreamdata and Slack. Analyst-level complexity</td><td style="color:var(--pink);font-weight:700;white-space:nowrap">Analyst</td></tr>
+          <tr style="background:#fff2f9"><td>Sigma dashboards (Dreamdata to HubSpot)</td><td>Cross-system BI build combining pipeline stages through to close-won</td><td style="color:var(--pink);font-weight:700;white-space:nowrap">Analyst</td></tr>
         </tbody>
       </table>
     </div>
