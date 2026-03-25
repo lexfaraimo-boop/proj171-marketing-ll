@@ -78,6 +78,8 @@ th{background:var(--dark);color:#fff;padding:14px 20px;text-align:left;font-weig
 td{padding:13px 20px;border-bottom:1px solid #f2f2f2;font-size:15px;color:var(--gray);background:var(--white);vertical-align:top;line-height:1.5}
 tr:last-child td{border-bottom:none}
 td:first-child{color:var(--dark);font-weight:600;white-space:nowrap}
+.compact-table th{padding:11px 16px;font-size:11px}
+.compact-table td{padding:10px 16px;font-size:12px}
 
 /* ── FLOW ── */
 .flow{display:flex;align-items:stretch;gap:10px;margin:8px 0;flex:1}
@@ -277,24 +279,24 @@ td:first-child{color:var(--dark);font-weight:600;white-space:nowrap}
   </svg>
   <p class="small-intro">Three consistent themes across all 9 responses.</p>
   <div class="content fill" style="gap:14px">
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;flex:1">
-      <div style="background:var(--white);border-radius:16px;padding:24px;box-shadow:0 3px 12px rgba(0,0,0,.07);display:flex;flex-direction:column;gap:12px">
-        <div style="width:44px;height:44px;background:rgba(240,77,169,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px">👁️</div>
-        <div style="font-size:17px;font-weight:700;color:var(--dark)">No visibility</div>
-        <div style="font-size:14px;color:var(--gray);line-height:1.6;flex:1">After a request is submitted, it disappears. Nobody knows where it's at or when to expect it back.</div>
-        <div style="background:#fff8fc;border-radius:10px;padding:12px 14px;font-size:13px;color:var(--dark);font-style:italic;line-height:1.5">"Transparency of the request queue and ability to prioritise within requests from our team"</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+      <div style="background:var(--white);border-radius:16px;padding:17px 18px;box-shadow:0 3px 12px rgba(0,0,0,.07);display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px">
+        <div style="width:53px;height:53px;background:rgba(240,77,169,.1);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px">🔍</div>
+        <div style="font-size:20px;font-weight:700;color:var(--dark)">No visibility</div>
+        <div style="font-size:17px;color:var(--gray);line-height:1.6">After a request is submitted, it disappears. Nobody knows where it's at or when to expect it back.</div>
+        <div style="background:#fff8fc;border-left:3px solid var(--pink);border-radius:0 10px 10px 0;padding:12px 16px;font-size:16px;color:var(--dark);font-style:italic;font-weight:500;line-height:1.5;text-align:left;width:100%">"Transparency of the request queue and ability to prioritise within requests from our team"</div>
       </div>
-      <div style="background:var(--white);border-radius:16px;padding:24px;box-shadow:0 3px 12px rgba(0,0,0,.07);display:flex;flex-direction:column;gap:12px">
-        <div style="width:44px;height:44px;background:rgba(0,102,255,.08);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px">❓</div>
-        <div style="font-size:17px;font-weight:700;color:var(--dark)">No clear front door</div>
-        <div style="font-size:14px;color:var(--gray);line-height:1.6;flex:1">Slack, form, manager, figure it out alone. Without one channel, requests get lost or go to the wrong place.</div>
-        <div style="background:#f5f8ff;border-radius:10px;padding:12px 14px;font-size:13px;color:var(--dark);font-style:italic;line-height:1.5">"Frustrating on both sides, even when nobody means it to be"</div>
+      <div style="background:var(--white);border-radius:16px;padding:17px 18px;box-shadow:0 3px 12px rgba(0,0,0,.07);display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px">
+        <div style="width:53px;height:53px;background:rgba(0,102,255,.08);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px">🚪</div>
+        <div style="font-size:20px;font-weight:700;color:var(--dark)">No clear front door</div>
+        <div style="font-size:17px;color:var(--gray);line-height:1.6">Slack, form, manager, figure it out alone. Without one channel, requests get lost or go to the wrong place.</div>
+        <div style="background:#f5f8ff;border-left:3px solid var(--blue);border-radius:0 10px 10px 0;padding:12px 16px;font-size:16px;color:var(--dark);font-style:italic;font-weight:500;line-height:1.5;text-align:left;width:100%">"Frustrating on both sides, even when nobody means it to be"</div>
       </div>
-      <div style="background:var(--white);border-radius:16px;padding:24px;box-shadow:0 3px 12px rgba(0,0,0,.07);display:flex;flex-direction:column;gap:12px">
-        <div style="width:44px;height:44px;background:rgba(240,77,169,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px">🧩</div>
-        <div style="font-size:17px;font-weight:700;color:var(--dark)">Unclear ownership</div>
-        <div style="font-size:14px;color:var(--gray);line-height:1.6;flex:1">Not always obvious what ops does vs what marketing should own. Leads to over-asking in some areas, under-asking in others.</div>
-        <div style="background:#fff8fc;border-radius:10px;padding:12px 14px;font-size:13px;color:var(--dark);font-style:italic;line-height:1.5">"Communication on projects, managing expectations and providing training"</div>
+      <div style="background:var(--white);border-radius:16px;padding:17px 18px;box-shadow:0 3px 12px rgba(0,0,0,.07);display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px">
+        <div style="width:53px;height:53px;background:rgba(240,77,169,.1);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px">❓</div>
+        <div style="font-size:20px;font-weight:700;color:var(--dark)">Unclear ownership</div>
+        <div style="font-size:17px;color:var(--gray);line-height:1.6">Not always obvious what ops does vs what marketing should own. Leads to over-asking in some areas, under-asking in others.</div>
+        <div style="background:#fff8fc;border-left:3px solid var(--pink);border-radius:0 10px 10px 0;padding:12px 16px;font-size:16px;color:var(--dark);font-style:italic;font-weight:500;line-height:1.5;text-align:left;width:100%">"Communication on projects, managing expectations and providing training"</div>
       </div>
     </div>
     <div class="hbox" style="font-size:15px;padding:14px 22px">None of this is a reflection of effort or intent on either side. <strong>It's a structural gap. and that's exactly what today is about fixing.</strong></div>
@@ -317,25 +319,25 @@ td:first-child{color:var(--dark);font-weight:600;white-space:nowrap}
   <div class="content fill" style="gap:16px">
     <div style="display:flex;gap:16px;align-items:stretch;flex:1">
       <div style="background:var(--white);border-radius:16px;padding:28px 24px;box-shadow:0 3px 12px rgba(0,0,0,.07);display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:170px;text-align:center">
-        <div style="font-size:72px;font-weight:800;color:var(--pink);line-height:1">9</div>
-        <div style="font-size:15px;color:var(--gray);font-weight:600;margin-top:4px">out of 9</div>
-        <div style="font-size:14px;color:var(--dark);font-weight:600;margin-top:10px;line-height:1.4">neutral or positive about building their own skills</div>
+        <div style="font-size:86px;font-weight:800;color:var(--pink);line-height:1">9</div>
+        <div style="font-size:18px;color:var(--gray);font-weight:600;margin-top:4px">out of 9</div>
+        <div style="font-size:17px;color:var(--dark);font-weight:600;margin-top:10px;line-height:1.4">neutral or positive about building their own skills</div>
         <div style="width:36px;height:3px;background:var(--pink);border-radius:2px;margin-top:12px"></div>
-        <div style="font-size:12px;color:var(--pink);font-weight:700;margin-top:8px;text-transform:uppercase;letter-spacing:.3px">0 negative responses</div>
+        <div style="font-size:14px;color:var(--pink);font-weight:700;margin-top:8px;text-transform:uppercase;letter-spacing:.3px">0 negative responses</div>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px;flex:1">
         <div style="background:var(--white);border-radius:14px;padding:18px 22px;box-shadow:0 3px 10px rgba(0,0,0,.06);border-left:4px solid var(--pink);flex:1;display:flex;align-items:center">
-          <div style="font-size:16px;color:var(--dark);font-style:italic;line-height:1.6">"Only very positive if the support and education was given to fully understand and feel confident in actioning these things."</div>
+          <div style="font-size:19px;color:var(--dark);font-style:italic;line-height:1.6">"Only very positive if the support and education was given to fully understand and feel confident in actioning these things."</div>
         </div>
         <div style="background:var(--white);border-radius:14px;padding:18px 22px;box-shadow:0 3px 10px rgba(0,0,0,.06);border-left:4px solid var(--blue);flex:1;display:flex;align-items:center">
-          <div style="font-size:16px;color:var(--dark);font-style:italic;line-height:1.6">"Training across platforms (HubSpot, Dreamdata) for specific functions would massively help."</div>
+          <div style="font-size:19px;color:var(--dark);font-style:italic;line-height:1.6">"Training across platforms (HubSpot, Dreamdata) for specific functions would massively help."</div>
         </div>
         <div style="background:var(--white);border-radius:14px;padding:18px 22px;box-shadow:0 3px 10px rgba(0,0,0,.06);border-left:4px solid var(--pink);flex:1;display:flex;align-items:center">
-          <div style="font-size:16px;color:var(--dark);font-style:italic;line-height:1.6">"Create more transparency of data. presenting interesting changes to me rather than me always looking for them."</div>
+          <div style="font-size:19px;color:var(--dark);font-style:italic;line-height:1.6">"Create more transparency of data. presenting interesting changes to me rather than me always looking for them."</div>
         </div>
       </div>
     </div>
-    <div class="hbox large" style="font-size:18px;padding:18px 26px">"We have room to go from working to great. and the team is already telling us they want that."</div>
+    <div class="hbox large" style="font-size:22px;padding:18px 26px">"We have room to go from working to great. and the team is already telling us they want that."</div>
   </div>
   <div class="slide-num">6 / 24</div>
 </div>
@@ -354,7 +356,7 @@ td:first-child{color:var(--dark);font-weight:600;white-space:nowrap}
   <p class="small-intro">Some tasks look simple from the outside. Here's what's actually involved.</p>
   <div class="content fill">
     <div class="table-wrap">
-      <table>
+      <table class="compact-table">
         <thead><tr><th>Task</th><th>What the team thinks</th><th>What's actually involved</th></tr></thead>
         <tbody>
           <tr><td>Pull a list from the CRM</td><td>Under 30 minutes</td><td>The pull is quick. getting the data <strong>clean</strong> can take much longer</td></tr>
